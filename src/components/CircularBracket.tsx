@@ -1,7 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import type { BracketData, Round } from '../types';
 import { getConnectors } from '../utils/bracketBuilder';
-import { generateConnectorPath, generateOrthogonalConnector } from '../utils/polarLayout';
+import { generateOrthogonalConnector } from '../utils/polarLayout';
 import { MatchNode } from './MatchNode';
 import './CircularBracket.css';
 

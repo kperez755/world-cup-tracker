@@ -22,8 +22,21 @@ export function useMatchDetail(match: Match | null) {
     }
 
     let isMounted = true;
+    const currentMatch = match;
     
     async function fetchDetails() {
+      if (!currentMatch) {
+        if (isMounted) {
+          setMatchDetail(null);
+          setEvents([]);
+          setLineup(null);
+          setOdds(null);
+          setSources([]);
+          setIsLoading(false);
+        }
+        return;
+      }
+
       setIsLoading(true);
       
       const newSources: Array<{source: string, fetchedAt: string}> = [];
@@ -47,9 +60,9 @@ export function useMatchDetail(match: Match | null) {
 
       // Fetch all available details in parallel
       const [eventsData, lineupData, oddsData] = await Promise.all([
-        premiumProvider.fetchEvents(match.id),
-        premiumProvider.fetchLineups(match.id),
-        premiumProvider.fetchOdds(match.id)
+        premiumProvider.fetchEvents(currentMatch.id),
+        premiumProvider.fetchLineups(currentMatch.id),
+        premiumProvider.fetchOdds(currentMatch.id)
       ]);
 
       if (isMounted) {

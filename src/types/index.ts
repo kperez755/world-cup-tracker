@@ -112,8 +112,7 @@ export interface Odds {
   updatedAt: string; // ISO 8601
 }
 
-export interface MatchDetail {
-  match: Match;
+export interface MatchDetail extends Match {
   events: MatchEvent[];
   lineup: Lineup | null;
   odds: Odds | null;

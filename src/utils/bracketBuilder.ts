@@ -4,7 +4,7 @@
  */
 
 import type { Match, BracketData, BracketNode, Round } from '../types';
-import { polarToCartesian, calculateRingRadius, calculateMatchAngle } from './polarLayout';
+import { polarToCartesian, calculateRingRadius } from './polarLayout';
 
 const RING_MAP: Record<Round, number> = {
   ROUND_OF_32: 0,

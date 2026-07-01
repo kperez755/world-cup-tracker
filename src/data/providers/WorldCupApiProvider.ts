@@ -36,14 +36,14 @@ export class WorldCupApiProvider implements DataProvider {
     return { data: [], source: this.name, fetchedAt: new Date().toISOString(), ttlSeconds: 0, isVerified: false };
   }
 
-  async fetchMatchDetail(matchId: string): Promise<DataEntry<MatchDetail> | null> {
+  async fetchMatchDetail(_matchId: string): Promise<DataEntry<MatchDetail> | null> {
     if (!this.isAvailable) return null;
     // WorldCupAPI match detail endpoint
     // Not strictly needed since we use useBracketData for match info, but here for interface completeness
     return null;
   }
 
-  async fetchOdds(matchId: string): Promise<DataEntry<Odds> | null> {
+  async fetchOdds(_matchId: string): Promise<DataEntry<Odds> | null> {
     if (!this.isAvailable) return null;
     return null; // WorldCupAPI is primarily stats/lineups, not betting odds
   }
