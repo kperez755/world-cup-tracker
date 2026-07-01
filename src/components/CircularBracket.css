@@ -1,0 +1,82 @@
+.bracket-viewport {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* subtle radial gradient background to draw eye to center */
+  background: radial-gradient(circle at center, rgba(30,41,59,0.5) 0%, transparent 70%);
+}
+
+.bracket-svg {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  /* Prevent text selection while dragging */
+  user-select: none; 
+}
+
+.bracket-svg.is-dragging {
+  cursor: grabbing;
+}
+
+.background-ring {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.03);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+}
+
+.connector-line {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.15); /* Fixed: valid color instead of border shorthand */
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.connector-line.is-dimmed {
+  opacity: 0.1;
+}
+
+.connector-line.is-active {
+  stroke: #22c55e; /* Green */
+  stroke-width: 3;
+  opacity: 0.8;
+  /* Animated dash effect and blinking pulse */
+  stroke-dasharray: 10;
+  animation: flow-path-blink 1.5s linear infinite;
+}
+
+@keyframes flow-path-blink {
+  0% { stroke-dashoffset: 20; opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0.3; }
+}
+
+.zoom-controls {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.zoom-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  border: var(--border-subtle);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.zoom-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--accent-gold);
+}

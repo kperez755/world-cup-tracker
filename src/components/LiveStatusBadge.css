@@ -1,0 +1,46 @@
+.status-badge {
+  display: inline-flex;
+  alignItems: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-elevated);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: var(--border-subtle);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.pulsing {
+  animation: pulse-red 1.5s infinite;
+}
+
+/* Specific Badge Styles based on container class */
+.status-badge.status-live {
+  color: var(--status-live);
+  border-color: rgba(239, 68, 68, 0.3);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.status-badge.status-halftime,
+.status-badge.status-extra-time {
+  color: var(--status-ht);
+  border-color: rgba(249, 115, 22, 0.3);
+  background-color: rgba(249, 115, 22, 0.1);
+}
+
+.status-badge.status-finished {
+  color: var(--text-secondary);
+}
+
+.status-badge.status-scheduled {
+  color: var(--text-muted);
+}

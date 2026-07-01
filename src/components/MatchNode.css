@@ -1,0 +1,140 @@
+.match-node-container {
+  overflow: visible;
+  transition: opacity 0.3s ease;
+}
+
+.match-node-container.is-dimmed {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.match-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Make it perfectly circular */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  overflow: visible;
+  background: rgba(30, 41, 59, 0.85); /* Slightly more solid so lines behind don't bleed too much */
+}
+
+.match-card.is-final {
+  background: radial-gradient(circle at center, rgba(45, 40, 20, 0.9), rgba(20, 20, 25, 0.95));
+  border-color: var(--accent-gold);
+}
+
+.trophy-placeholder {
+  font-size: 3rem;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+.match-card:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--accent-gold);
+  z-index: 10;
+}
+
+.match-card.is-live {
+  border-color: #eab308; /* Yellow */
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.5);
+  animation: blink-yellow 1.5s infinite;
+}
+
+@keyframes blink-yellow {
+  0% { box-shadow: 0 0 10px rgba(234, 179, 8, 0.2); border-color: rgba(234, 179, 8, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(234, 179, 8, 0.8); border-color: rgba(234, 179, 8, 1); }
+  100% { box-shadow: 0 0 10px rgba(234, 179, 8, 0.2); border-color: rgba(234, 179, 8, 0.5); }
+}
+
+.match-card.is-finished {
+  border-color: #ef4444; /* Red */
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+.match-card-badge-container {
+  position: absolute;
+  top: -5px;
+  z-index: 2;
+}
+
+.team-circles-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  transition: color 0.2s ease;
+}
+
+.team-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 40px;
+}
+
+.team-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  line-height: 1;
+}
+
+.team-divider {
+  width: 60%;
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 0.125rem 0;
+}
+
+.team-score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.pen-score {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Winner / Loser States */
+.team-row.is-winner {
+  color: var(--accent-gold);
+}
+.team-row.is-winner .team-code {
+  color: var(--accent-gold);
+}
+.team-row.is-winner .team-score {
+  color: var(--text-primary);
+}
+
+.team-row.is-loser {
+  opacity: 0.3;
+  filter: grayscale(100%);
+}
+.team-row.is-loser .team-score {
+  color: var(--text-muted);
+}
